@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, DirectionsRenderer, DirectionsService } from '@react-google-maps/api';
+import Directions from "../MapWithForm"
 
 const containerStyle = {
   width: '400px',
@@ -17,14 +18,14 @@ class NewMapAPI extends Component {
       <LoadScript
         googleMapsApiKey="AIzaSyCZGl5xRRXsZcx3O3C4-YyfYT9jZVP5AVw"
       >
-        <GoogleMap
+        {/* <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
           zoom={10}
-        >
-          { /* Child components, such as markers, info windows, etc. */ }
+        > */}
+        <Directions></Directions> 
           <></>
-        </GoogleMap>
+        {/* </GoogleMap> */}
       </LoadScript>
     )
   }

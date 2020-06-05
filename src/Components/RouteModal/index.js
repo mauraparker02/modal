@@ -1,39 +1,11 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-materialize";
-import {
-  GoogleMap,
-  withScriptjs,
-  withGoogleMap,
-  Marker,
-} from "react-google-maps";
+import Directions from "../NewMapAPI"
 import TestData from "../../data_test/crisp"
+import NewMapAPI from "../NewMapAPI";
 // import RouteForm from "../RouteForm";
 // import RouteMap from "../RouteMap";
-//Map Function
-function Map(props) {
-  console.log(props);
 
-  return (
-    <GoogleMap
-      defaultZoom={15}
-      defaultCenter={{ lat:41.9361111, lng:-87.6444389 }}
-    >
-      {TestData.map((place, i) => (
-        <Marker
-          key={place.candidates[0].name + i}
-          position={{
-            lat: place.candidates[0].geometry.location.lat,
-            lng: place.candidates[0].geometry.location.lng,
-          }}
-        />
-      ))}
-    </GoogleMap>
-  );
-}
-
-  //  mapTrigger = (props) => {
-  // return(<Button modal="close" onClick={props.handleSubmit}></Button>)
-  // }
 
 //Route Form Component
 class RouteForm extends Component {
@@ -78,23 +50,11 @@ class RouteMap extends Component {
     });
   }
   render() {
-    const WrappedMap = withScriptjs(withGoogleMap(<GoogleMap
-      defaultZoom={15}
-      defaultCenter={{ lat:41.9361111, lng:-87.6444389 }}
-    >
-    </GoogleMap>));
     return (
       <div>
         <h1>Map</h1>
         <Button onClick={this.handleModalSubmit}>Back to form</Button>
-        <WrappedMap
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCZGl5xRRXsZcx3O3C4-YyfYT9jZVP5AVw`}
-        loadingElement={<div style={{ height: `100%`, width: `100%`}} />}
-        containerElement={<div style={{ height: `100%`, width: `100%` }} />}
-        mapElement={<div style={{ height: `100%`, width: `100%` }} />}
-        lat={41.9361111}
-        lng={-87.6444389}
-      />
+       <NewMapAPI></NewMapAPI>
       </div>
     );
   }
